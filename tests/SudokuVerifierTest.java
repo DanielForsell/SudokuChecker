@@ -22,8 +22,35 @@ SudokuVerifier v = new SudokuVerifier();
 	public void testIncorrectString() {
 		int a = v.verify(i);
 		assertEquals("incorrect string", a, -2);
-		
 	}
 	
+	@Test
+    public void testInvalidCharacterInSolution() {
+        
+        int a = v.verify("X" + c);
+        assertEquals(a , -1);
+    }
+	
+	@Test
+    public void testEmpty() {
+        
+        int a = v.verify("");
+        assertEquals(a , -1);
+    }
+	
+	@Test
+	public void testLetterinrow() {
+	    int a = v.verify("A17369825632158947958724316825437169791586432346912758289643571573291684164875293");
+	    assertEquals(a, 1);
+	}
+
+
+	@Test
+	public void testZeroInString() {
+	    int a = v.verify("427369805632158947958724316825437169791586432346912758289643571573291684164875293");
+	    assertEquals(a, -1);
+	}
+	
+
 	
 }
